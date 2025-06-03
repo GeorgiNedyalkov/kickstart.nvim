@@ -795,15 +795,27 @@ require('lazy').setup({
     -- Change the name of the colorscheme plugin below, and then
     -- change the command in the config to whatever the name of that colorscheme is.
     --
-    -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
     {
-      'rose-pine/neovim',
-      name = 'rose-pine',
+      'catppuccin/nvim',
+      name = 'catppuccin',
+      priority = 1000,
       config = function()
-        vim.cmd 'colorscheme rose-pine'
+        require('catppuccin').setup {
+          flavor = 'mocha',
+          color_overrides = {
+            mocha = {
+              base = '#000000',
+              mantle = '#000000',
+              crust = '#000000',
+            },
+          },
+        }
+        vim.cmd.colorscheme 'catppuccin'
       end,
     },
     --
+    -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
+    --- THEME SETUP
     -- 'folke/tokyonight.nvim',
     -- priority = 1000, -- Make sure to load this before all the other start plugins.
     -- config = function()
@@ -921,7 +933,6 @@ require('lazy').setup({
   --
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
   -- { import = 'custom.plugins' },
-  --
   -- For additional information with loading, sourcing and examples see `:help lazy.nvim-🔌-plugin-spec`
   -- Or use telescope!
   -- In normal mode type `<space>sh` then write `lazy.nvim-plugin`
